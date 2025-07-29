@@ -1,0 +1,1 @@
+python extract_lamp.py --coordinates 26.6761,-80.0369 --key Φ669
