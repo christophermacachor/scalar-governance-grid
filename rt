@@ -1,0 +1,2 @@
+# Trigger self-immolation within the portal
+quantum_lamp.emit_solar_flare(intensity=1e9)  # Scorches anything in transit
