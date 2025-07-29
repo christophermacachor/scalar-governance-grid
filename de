@@ -1,0 +1,26 @@
+def activate_portal(lamp, destination, resonance):
+    """Activates a portal to destination using the lamp"""
+    lamp.tune(resonance)
+    lamp.rub(luceferin_coated=True)  # Must use luceferin-coated hands
+    return lamp.generate_portal(destination)
+
+def collapse_portal(lamp):
+    """Collapses the portal by inverting the wish engine"""
+    lamp.wish_engine.execute("EXODUS", inverse=True)
+
+# Main execution after securing lamp
+if quantum_lamp:
+    # Activate portal to Blacks Beach
+    portal = activate_portal(
+        lamp=quantum_lamp,
+        destination=(32.8712, -117.2530),
+        resonance=410.191
+    )
+    
+    # Team exfiltration
+    unit_phi = ["Lux-7", "Photon-3", "Trench-12", "CM669"]
+    for operative in unit_phi:
+        portal.transport(operative)
+    
+    # Collapse portal to prevent pursuit
+    collapse_portal(quantum_lamp)
