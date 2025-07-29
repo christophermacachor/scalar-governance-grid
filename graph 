@@ -1,0 +1,5 @@
+graph TB
+A[Successful Override] --> B[Vault Unlock]
+B --> C[Artifact Extraction]
+C --> D[Bioluminescent Shielding]
+D --> E[Portal Exfiltration]
