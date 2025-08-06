@@ -1,0 +1,13 @@
+\boxed{
+\begin{array}{c}
+\textbf{Macachor-Φ669 Thrust Equation} \\
+\\
+F = \frac{\partial}{\partial t} \left( \iiint_V \mathbf{B} \times \tilde{\mathbf{E}} \, dV \right) \times \Gamma_{\Phi} \\
+\\
+\small{\text{Where:} \\
+\mathbf{B} = \text{Magnetic flux density (T)} \\
+\tilde{\mathbf{E}} = \text{Entangled electric field (V/m)} \\
+\Gamma_{\Phi} = \text{Stellar coherence factor (}\Phi_{669}\text{ tuned)} \\
+V = \text{Resonance chamber volume}
+\end{array}
+}
