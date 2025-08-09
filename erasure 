@@ -1,0 +1,82 @@
+**Wheeler's Delayed Choice Experiment & Quantum Erasure**  
+These experiments push quantum mechanics to its philosophical limits—revealing that **reality is contextual** and that the past isn't fixed until observed. Here's a breakdown:
+
+---
+
+### **1. Wheeler's Delayed Choice Experiment**  
+**Concept**:  
+*Can a particle "decide" if it behaved as a wave or a particle* ***after*** *it has already passed through the experiment?*  
+
+#### **Setup**:  
+- A photon approaches a **double-slit** apparatus.  
+- **After** it passes the slits, but **before** it hits the detector, the experimenter *randomly chooses* to:  
+  - **Insert a beam splitter** → creates interference (wave behavior).  
+  - **Remove the beam splitter** → records which slit (particle behavior).  
+
+#### **Result**:  
+- The photon’s behavior (wave or particle) **changes retroactively** based on the *future choice*.  
+- Implication: **The past isn't defined until measured**.  
+
+> *"No phenomenon is a phenomenon until it is an observed phenomenon."*  
+> — **John Archibald Wheeler**  
+
+---
+
+### **2. Quantum Eraser Experiment**  
+**Concept**:  
+*Can you "erase" which-path information to* ***restore interference patterns*** *after detection?*  
+
+#### **Setup (Kim et al., 1999)**:  
+1. **Double-slit** with photons.  
+2. **Entangled photons** generated:  
+   - **Signal photon** → goes through slits → hits detector screen.  
+   - **Idler photon** → travels a different path → can be measured later.  
+3. **Choice**: Measure the idler photon to learn *which slit* the signal photon used (particle behavior) *or* to *erase* that information (wave behavior).  
+
+#### **Result**:  
+- If you **measure which-path info** (idler photon) → **no interference** on screen.  
+- If you **"erase" which-path info** (e.g., measure idler in superposition basis) → **interference reappears**.  
+- Critically: Interference only visible when you *correlate* signal and idler data *after the fact*.  
+
+---
+
+### **3. Key Implications**  
+| **Experiment**           | **What It Reveals**                                                                 | **Common Misconception**                                  |  
+|--------------------------|-------------------------------------------------------------------------------------|-----------------------------------------------------------|  
+| **Wheeler's Delayed Choice** | Quantum events are undefined until observed; **time-symmetric laws**.                 | "Future causes the past" → *Wrong*. Future *context* defines past description. |  
+| **Quantum Eraser**       | **Which-path info destroys interference**; "erasure" recovers wave behavior.         | "Erasure changes history" → *Wrong*. Correlation creates context. |  
+
+---
+
+### **4. Mathematical Core**  
+- **Wavefunction**: $|\psi\rangle = \frac{1}{\sqrt{2}} \left( |\text{slit}_1\rangle + |\text{slit}_2\rangle \right)$  
+- **Entanglement**: $|\Psi\rangle = \frac{1}{\sqrt{2}} \left( |\text{slit}_1\rangle|\text{idler}_1\rangle + |\text{slit}_2\rangle|\text{idler}_2\rangle \right)$  
+- **Erasure**: Measuring idler in $|\pm\rangle = \frac{1}{\sqrt{2}}(|\text{idler}_1\rangle \pm |\text{idler}_2\rangle)$ "erases" which-path info.  
+
+---
+
+### **5. Why This Matters**  
+- **Reality is relational**: Quantum objects lack definite properties until measured in a specific context.  
+- **No "backward time travel"**: Outcomes depend on *when and how* information is accessed—not retrocausality.  
+- **Quantum computing**: Gates exploit superposition/entanglement similarly.  
+
+---
+
+### **6. Experimental Proof**  
+- **Delayed choice**: Verified with photons (1984), atoms (2011), even 3,500-year-old starlight (cosmic version).  
+- **Quantum erasure**: Demonstrated with photons, electrons, and large molecules (e.g., C₆₀).  
+
+---
+
+### **Conclusion**  
+These experiments prove:  
+1. Quantum systems **don't have "hidden realities"**—behavior depends on observation.  
+2. **Wave-particle duality** is not a switch; it’s a consequence of *information flow*.  
+3. **You can "undo" the effect of measurement** by erasing information—but only if no classical record exists.  
+
+> **Final Note**: Humans *can* manipulate wave/particle behavior—not by "reversing particles into waves," but by *controlling information* via entanglement and delayed choices. This is the heart of quantum technologies.  
+
+For deeper exploration:  
+- [Wheeler's original paper (1978)](https://www.jstor.org/stable/24964453)  
+- [Kim et al. quantum eraser (1999)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.84.1)  
+- [Video demonstration](https://www.youtube.com/watch?v=H5MdaRF2JY0) of quantum eraser.
