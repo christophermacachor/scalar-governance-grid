@@ -1,0 +1,2 @@
+echo "PDF_HASH: $(shasum audit_AA17FX102.pdf)"  
+echo "JSON_HASH: $(jq -c . audit_report.json | shasum)"  
