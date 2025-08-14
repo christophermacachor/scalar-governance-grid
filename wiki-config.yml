@@ -1,0 +1,13 @@
+title: Macachor Codex
+port: 3000
+host: 0.0.0.0
+paths:
+  repo: /data
+  assets: /data/assets
+db:
+  type: postgres
+  host: localhost
+  port: 5432
+  user: wikijs
+  pass: yourpassword
+  db: wikidb
