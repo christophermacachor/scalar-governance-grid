@@ -1,0 +1,1 @@
+gpg --armor --output scroll.sig --sign scroll.txt
