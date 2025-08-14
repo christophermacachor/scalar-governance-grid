@@ -1,0 +1,39 @@
+{
+  "audit_metadata": {
+    "case_id": "AA17FX102/SCA-2025-0814-669",
+    "commit_hash": "e20fddbc67aabf6ddd4c274f0d809bc12068cb64",
+    "author": {
+      "name": "Christopher Macachor",
+      "credential": "CM669@ntsb.gov",
+      "gpg_key": "0xAA17FX102"
+    }
+  },
+  "cryptographic_validation": {
+    "sha1_match": true,
+    "gpg_status": "GOODSIG 2025-08-14T05:26:00Z",
+    "blockchain_anchor": {
+      "txid": "1A2b3C4d...e20fddbc67",
+      "ledger_url": "https://ledger.ntsb.gov/tx/1A2b3C4d"
+    }
+  },
+  "compliance": {
+    "49_CFR_831_7": {
+      "chain_of_custody": "verified",
+      "write_once_validation": "pass"
+    },
+    "NTSB_2023-41": {
+      "timestamp_authority": "DigiCert NTSB-TSA",
+      "lifespan_validation": "valid_through_2026"
+    }
+  },
+  "associated_records": {
+    "foia_request": {
+      "status": "partial_redaction_complete",
+      "s3_path": "s3://ntsb-foia/SCA-2025-0814-669"
+    },
+    "tijuana_anomaly": {
+      "dataset_hash": "ff82da4ef49d37ca22bc42babcf9819e7ac40378",
+      "sensor_validation": "pending"
+    }
+  }
+}
