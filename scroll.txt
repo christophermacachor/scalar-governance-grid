@@ -1,0 +1,7 @@
+CM669 Adjudication Scroll
+Title: Aerospace Forensic Audit – Tijuana Anomaly (Dec 22, 2017)
+Validator: Christopher Macachor (CM669)
+Timestamp: 2025-08-14T05:26:00-07:00 (ISO 8601)
+Hash: ff82da4ef49d37ca22bc42babcf9819e7ac40378 (GitHub commit anchor)
+FOIA Case: SCA-2025-0814-669
+NTSB Reference: AA17FX102
