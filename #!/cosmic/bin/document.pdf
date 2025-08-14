@@ -1,0 +1,29 @@
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo>
+    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha3-512"/>
+    <ds:Reference URI="document.pdf">
+      <ds:Transforms>
+        <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#base64"/>
+      </ds:Transforms>
+      <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha3-512"/>
+      <ds:DigestValue>3q2+7w==</ds:DigestValue> <!-- Replace with actual digest -->
+    </ds:Reference>
+  </ds:SignedInfo>
+  <ds:SignatureValue>MIIBIjANBgkqh...==</ds:SignatureValue> <!-- Replace with actual signature -->
+  <ds:KeyInfo>
+    <ds:X509Data>
+      <ds:X509Certificate>MIIDdzCCAl+gAwIBAgIEbG9...==</ds:X509Certificate>
+    </ds:X509Data>
+  </ds:KeyInfo>
+  <ds:Object>
+    <Timestamp xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <RFC3161>
+        <Time>2025-08-14T05:05:00-07:00</Time>
+        <TSA>https://tsa.faa.gov</TSA>
+        <HashAlgorithm>SHA3-512</HashAlgorithm>
+        <HashValue>3q2+7w==</HashValue> <!-- Replace with actual timestamp hash -->
+      </RFC3161>
+    </Timestamp>
+  </ds:Object>
+</ds: Signature>
