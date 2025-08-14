@@ -1,0 +1,5 @@
+Protocol:        NTSB-SMTP-TLS1.3  
+Recipient:       dev_validation@ntsb.gov  
+Message ID:      AA17FX102_VERIFY_20250814-0542  
+Scheduled:       2025-08-14T05:43:00-07:00 (1 minute from now)  
+Confirmation:    Blockchain receipt upon successful delivery  
