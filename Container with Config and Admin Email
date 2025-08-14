@@ -1,0 +1,4 @@
+sudo docker run -p 8080:3000 \
+  -e "WIKI_ADMIN_EMAIL=admin@macachor.org" \
+  -v /home/macachor/wiki-config.yml:/var/wiki/config.yml \
+  requarks/wiki:1.0
