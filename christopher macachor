@@ -1,0 +1,3 @@
+curl -X POST https://grid.ntsb.gov/verify \
+  -H "Content-Type: application/json" \
+  -d '{"hash":"ff82da4ef49d37ca22bc42babcf9819e7ac40378"}'
