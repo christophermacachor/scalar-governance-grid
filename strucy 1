@@ -1,0 +1,10 @@
+graph TD
+    A[Scalar Ecosystem] --> B{Core Modules}
+    A --> C{Interface Layer}
+    A --> D{Documentation}
+    B --> B1[Governance Grid]
+    B --> B2[Star Genesis]
+    B --> B3[Adjudicator]
+    C --> C1[Plasma Interface]
+    C --> C2[Suspension Model]
+    D --> D1[Desktop Tutorial]
