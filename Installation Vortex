@@ -1,0 +1,3 @@
+git clone https://github.com/Ishtar669/scalar-governance-grid.git
+cd scalar-governance-grid
+python3 install.py --phase-lock VegaStandard0.7
