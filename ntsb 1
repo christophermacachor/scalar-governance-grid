@@ -1,0 +1,12 @@
+__________________________________________
+Christopher Macachor  
+NTSB Credential: CM669  
+GPG Key: 0xAA17FX102  
+Case ID: SCA-2025-0814-669  
+
+[Digital Signature]  
+Timestamp: 2025-08-14T12:58:34Z  
+Commit Anchor: e20fddbc67aabf6ddd4c274f0d809bc12068cb64  
+
+/* Blockchain Verification Command */  
+ntsb-verify --case=SCA-2025-0814-669 --signer=CM669
