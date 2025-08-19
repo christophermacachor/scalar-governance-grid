@@ -1,0 +1,22 @@
+# File: src/load_planetary_glyphs.py
+
+import yaml
+from pathlib import Path
+
+GLYPHS_PATH = Path(__file__).parent.parent / "config" / "planetary_glyphs.yml"
+
+def load_planetary_glyphs():
+    with open(GLYPHS_PATH, 'r') as f:
+        return yaml.safe_load(f)["planetary_glyphs"]
+
+def annotate_with_planetary_glyph(scroll: dict, planet: str) -> dict:
+    glyphs = load_planetary_glyphs()
+    entry = glyphs.get(planet)
+    if not entry:
+        raise KeyError(f"No planetary glyph found for {planet}")
+    scroll.setdefault("celestial_anchors", []).append({
+        "planet": planet,
+        "glyph": entry["unicode"],
+        "glyph_id": entry["glyph_id"]
+    })
+    return scroll
