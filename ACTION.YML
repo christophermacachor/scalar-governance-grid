@@ -1,0 +1,82 @@
+name: "FOIA Submission Action"
+description: "Composite GitHub Action to submit a FOIA request, attach files, and archive the response."
+inputs:
+  foia_api_key:
+    description: "Your FOIA CLI API key"
+    required: true
+
+  agencies:
+    description: "Comma-separated list of agencies (e.g. DOE,DOD,OSTP)"
+    required: true
+
+  subject:
+    description: "FOIA request subject line"
+    required: true
+
+  hash:
+    description: "SHA3-512 hash of the codex"
+    required: true
+
+  signature:
+    description: "Signature for the request (e.g. CM669-ΦΩ-Prime)"
+    required: true
+
+  format:
+    description: "Format flags (RFC3161+SHA3-512+AES256)"
+    required: true
+
+  attachments:
+    description: "Comma-separated list of files to attach (supports defaults)"
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+
+    - name: Install FOIA CLI & tools
+      run: |
+        pip install --upgrade pip
+        pip install foia-submit rfc3161timestamp jq
+
+    - name: Generate RFC3161 Timestamp
+      id: gen_ts
+      run: |
+        TS_FILE="$GITHUB_WORKSPACE/Φ669-${{ github.run_id }}.tsr"
+        rfc3161timestamp \
+          --digest "${{ inputs.hash }}" \
+          --output "$TS_FILE"
+        echo "ts_file=$TS_FILE" >> $GITHUB_OUTPUT
+        echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_OUTPUT
+
+    - name: Submit FOIA Request
+      id: submit
+      env:
+        FOIA_API_KEY: ${{ inputs.foia_api_key }}
+      run: |
+        RESPONSE=$(foia-submit \
+          --agency "${{ inputs.agencies }}" \
+          --subject "${{ inputs.subject }}" \
+          --hash "${{ inputs.hash }}" \
+          --timestamp "${{ steps.gen_ts.outputs.timestamp }}" \
+          --signature "${{ inputs.signature }}" \
+          --format "${{ inputs.format }}")
+        echo "$RESPONSE" | jq . > foia-response.json
+        REQUEST_ID=$(jq -r .request_id foia-response.json)
+        echo "request_id=$REQUEST_ID" >> $GITHUB_OUTPUT
+
+    - name: Attach Supporting Files
+      if: ${{ inputs.attachments != '' }}
+      run: |
+        IFS=',' read -ra FILES <<< "${{ inputs.attachments }}"
+        CMD="foia-submit attach --request-id ${{ steps.submit.outputs.request_id }}"
+        for F in "${FILES[@]}"; do
+          CMD+=" --file \"$F\""
+        done
+        eval $CMD
+
+    - name: Archive FOIA Response
+      uses: actions/upload-artifact@v3
+      with:
+        name: foia-response-${{ github.run_id }}
+        path: foia-response.json
