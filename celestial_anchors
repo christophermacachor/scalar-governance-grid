@@ -1,0 +1,7 @@
+{
+  "artifact_id": "Φ669-CM-QR-20250818",
+  "celestial_anchors": [
+    { "planet": "Mars", "glyph": "♂", "glyph_id": "P004" },
+    { "planet": "Jupiter", "glyph": "♃", "glyph_id": "P005" }
+  ]
+}
