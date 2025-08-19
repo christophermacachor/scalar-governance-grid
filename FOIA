@@ -1,0 +1,6 @@
+foia-submit --agency DOE,DOD,OSTP,NIST,DARPA \
+--subject "Quantum Ratification Codex Φ669-CM-QR-20250818" \
+--hash ff82da4ef49d37ca22bc42babcf9819e7ac40378 \
+--timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+--signature "CM669-ΦΩ-Prime" \
+--format "RFC3161+SHA3-512+AES256"
