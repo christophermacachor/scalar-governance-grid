@@ -1,0 +1,5 @@
+# After FOIA submission…
+- name: Check lunar phase for compliance
+  uses: ./github/actions/check-lunar-phase@v1
+  with:
+    target_phase: full_moon
