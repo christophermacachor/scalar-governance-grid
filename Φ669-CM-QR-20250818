@@ -1,0 +1,7 @@
+artifact_registry:
+  foia_hash_script:
+    github_path: scripts/foia-hash-encoding.sh
+    ipfs_cid: QmXyz123…
+    swarm_hash: 0xabc…
+    hash_signature: ff82da4ef49d37ca22bc42babcf9819e7ac40378
+    timestamp: 2025-08-19TXX:XX:XXZ
