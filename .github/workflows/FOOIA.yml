@@ -1,0 +1,20 @@
+# File: .github/workflows/ci-foia.yml
+name: FOIA Submission & Audit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  foia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # … your existing FOIA submission steps …
+
+      - name: Check lunar phase for Full Moon
+        uses: ./.github/actions/check-lunar-phase
+        with:
+          target_phase: full_moon
+
+      # … continue with deployment or audit steps …
