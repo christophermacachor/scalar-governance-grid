@@ -1,0 +1,12 @@
+name: "Check Lunar Phase"
+description: "Fails if current date is outside the specified lunar phase window"
+inputs:
+  target_phase:
+    description: "Lunar phase slug (new_moon, full_moon, etc.)"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "${{ inputs.target_phase }}"
+    - "${{ github.event.inputs.date || '' }}"
