@@ -1,0 +1,14 @@
+import yaml
+
+with open("config/planetary_glyphs.yml") as f:
+    glyphs = yaml.safe_load(f)["planetary_glyphs"]
+
+# Example use: attach glyph to scroll metadata
+def annotate_with_planetary_glyph(scroll, planet):
+    entry = glyphs.get(planet)
+    scroll["celestial_anchors"].append({
+        "planet": planet,
+        "glyph": entry["unicode"],
+        "glyph_id": entry["glyph_id"]
+    })
+    return scroll
