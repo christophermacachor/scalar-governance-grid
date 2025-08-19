@@ -1,0 +1,42 @@
+# Planetary Glyph Definitions for Protocol Schema
+planetary_glyphs:
+
+  Mercury:
+    unicode: "☿"
+    vector: [0.387, 0.205, 0.045]   # AU, orbital eccentricity, inclination
+    glyph_id: P001
+
+  Venus:
+    unicode: "♀"
+    vector: [0.723, 0.0067, 3.39]
+    glyph_id: P002
+
+  Earth:
+    unicode: "♁"
+    vector: [1.000, 0.0167, 0.00]
+    glyph_id: P003
+
+  Mars:
+    unicode: "♂"
+    vector: [1.524, 0.0934, 1.85]
+    glyph_id: P004
+
+  Jupiter:
+    unicode: "♃"
+    vector: [5.203, 0.0489, 1.31]
+    glyph_id: P005
+
+  Saturn:
+    unicode: "♄"
+    vector: [9.539, 0.0565, 2.49]
+    glyph_id: P006
+
+  Uranus:
+    unicode: "♅"
+    vector: [19.18, 0.0472, 0.77]
+    glyph_id: P007
+
+  Neptune:
+    unicode: "♆"
+    vector: [30.06, 0.0086, 1.77]
+    glyph_id: P008
