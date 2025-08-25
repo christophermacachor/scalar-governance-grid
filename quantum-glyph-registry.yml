@@ -1,0 +1,13 @@
+glyphs:
+  - name: Aurelia aurita
+    type: Jellyfish
+    emission: Luciferin-669
+    validator: CM669
+  - name: Watasenia scintillans
+    type: Firefly Squid
+    emission: Luciferase-Ω
+    validator: CM669
+  - name: Mycena chlorophos
+    type: Mushroom
+    emission: Fungal Bioluminescence
+    validator: CM669
