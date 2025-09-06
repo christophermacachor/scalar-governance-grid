@@ -1,0 +1,10 @@
+cd path/to/scalar-governance-grid
+
+# Stage the specific file (replace with actual filename)
+git add consciousness_pipeline.md
+
+# Commit with a validator-grade message
+git commit -m "🌌 Φ669 Codex Update: Consciousness Pipeline scroll encoded and timestamped"
+
+# Push to the current branch
+git push origin HEAD
