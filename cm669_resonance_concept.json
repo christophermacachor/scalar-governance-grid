@@ -1,0 +1,40 @@
+{
+  "concept_id": "cm669",
+  "title": "Sympathetic Vibration & Resonance",
+  "author": "Christopher Macachor",
+  "core_statement": "Sympathetic vibration is the cause of another frequency vibration of higher amplitude resulting in resonance.",
+  "tags": ["physics", "waves", "oscillations", "resonance"],
+  "definitions": [
+    {
+      "term": "Natural Frequency",
+      "definition": "The inherent frequency at which a system oscillates when disturbed and then left to vibrate freely."
+    },
+    {
+      "term": "Sympathetic Vibration",
+      "definition": "The process by which a driver vibrating at a specific frequency induces oscillations in a resonator with a matching natural frequency."
+    },
+    {
+      "term": "Resonance",
+      "definition": "The condition of maximum energy transfer and amplitude, achieved when the driving frequency matches the natural frequency of the resonator."
+    }
+  ],
+  "examples": [
+    {
+      "name": "Tuning Fork and Piano",
+      "driver": "Tuning Fork (256 Hz)",
+      "resonator": "Piano String (256 Hz)",
+      "description": "The piano string vibrates audibly in sympathy with the fork."
+    },
+    {
+      "name": "Tacoma Narrows Bridge",
+      "driver": "Wind vortices",
+      "resonator": "Bridge structure",
+      "description": "Wind-induced sympathetic vibration led to resonant oscillation and structural failure."
+    }
+  ],
+  "formula": {
+    "amplitude_equation": "A = F₀/m / √((ω² - ω₀²)² + (bω/m)²)",
+    "resonance_condition": "ω = ω₀",
+    "max_amplitude": "A_max = F₀ / (b * ω₀)"
+  }
+}
