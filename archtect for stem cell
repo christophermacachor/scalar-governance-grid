@@ -1,0 +1,315 @@
+"""
+scalar-governance-grid
+
+Core scaffolding for representing and evaluating scalar governance states
+across institutions, assets, and workflows.
+"""
+
+from dataclasses import dataclass
+from typing import Dict, Any, List
+
+
+@dataclass
+class ScalarDimension:
+    """Single scalar dimension in the governance grid (e.g., compliance, risk, latency)."""
+    name: str
+    value: float
+    min_value: float = 0.0
+    max_value: float = 1.0
+
+    def normalized(self) -> float:
+        """Return value normalized to [0, 1]."""
+        if self.max_value == self.min_value:
+            return 0.0
+        return (self.value - self.min_value) / (self.max_value - self.min_value)
+
+
+@dataclass
+class GovernanceNode:
+    """
+    A node in the governance grid: could be a lab, system, workflow, or asset.
+    Each node carries a set of scalar dimensions.
+    """
+    id: str
+    label: str
+    dimensions: Dict[str, ScalarDimension]
+
+    def score(self, weights: Dict[str, float] | None = None) -> float:
+        """
+        Compute a weighted scalar score for this node.
+        weights: optional mapping from dimension name to weight.
+        """
+        if not self.dimensions:
+            return 0.0
+
+        weights = weights or {k: 1.0 for k in self.dimensions.keys()}
+        total_weight = sum(weights.values()) or 1.0
+
+        weighted_sum = 0.0
+        for name, dim in self.dimensions.items():
+            w = weights.get(name, 0.0)
+            weighted_sum += w * dim.normalized()
+
+        return weighted_sum / total_weight
+
+
+class ScalarGovernanceGrid:
+    """
+    Container for multiple governance nodes, with methods to
+    evaluate, compare, and export scalar governance states.
+    """
+
+    def __init__(self) -> None:
+        self._nodes: Dict[str, GovernanceNode] = {}
+
+    def add_node(self, node: GovernanceNode) -> None:
+        self._nodes[node.id] = node
+
+    def get_node(self, node_id: str) -> GovernanceNode | None:
+        return self._nodes.get(node_id)
+
+    def ranked_nodes(self, weights: Dict[str, float] | None = None) -> List[GovernanceNode]:
+        """Return nodes ranked by score (highest first)."""
+        return sorted(
+            self._nodes.values(),
+            key=lambda n: n.score(weights),
+            reverse=True,
+        )
+
+    def snapshot(self, weights: Dict[str, float] | None = None) -> Dict[str, Any]:
+        """
+        Return a serializable snapshot of the grid:
+        node scores, normalized dimensions, and ranking.
+        """
+        data = []
+        for node in self._nodes.values():
+            node_data = {
+                "id": node.id,
+                "label": node.label,
+                "score": node.score(weights),
+                "dimensions": {
+                    name: {
+                        "value": dim.value,
+                        "normalized": dim.normalized(),
+                        "min": dim.min_value,
+                        "max": dim.max_value,
+                    }
+                    for name, dim in node.dimensions.items()
+                },
+            }
+            data.append(node_data)
+
+        ranked = sorted(data, key=lambda d: d["score"], reverse=True)
+        return {"nodes": ranked}
+
+
+def example_grid() -> ScalarGovernanceGrid:
+    """
+    Build a tiny example grid.
+    Replace this with real institutional / workflow data.
+    """
+    grid = ScalarGovernanceGrid()
+
+    node_a = GovernanceNode(
+        id="lab-ucsd-stemcell",
+        label="UCSD Stem Cell Program",
+        dimensions={
+            "compliance": ScalarDimension("compliance", 0.92),
+            "throughput": ScalarDimension("throughput", 0.75),
+            "auditability": ScalarDimension("auditability", 0.88),
+        },
+    )
+
+    node_b = GovernanceNode(
+        id="incubator-jlabs",
+        label="JLABS San Diego",
+        dimensions={
+            "compliance": ScalarDimension("compliance", 0.85),
+            "throughput": ScalarDimension("throughput", 0.90),
+            "auditability": ScalarDimension("auditability", 0.80),
+        },
+    )
+
+    grid.add_node(node_a)
+    grid.add_node(node_b)
+    return grid
+
+
+if __name__ == "__main__":
+    grid = example_grid()
+    snapshot = grid.snapshot()
+    for node in snapshot["nodes"]:
+        print(f"{node['label']}: score={node['score']:.3f}")"""
+scalar-governance-grid
+
+Core scaffolding for representing and evaluating scalar governance states
+across institutions, assets, and workflows.
+
+This module defines:
+- ScalarDimension: a normalized scalar metric
+- GovernanceNode: a node with multiple scalar dimensions
+- ScalarGovernanceGrid: a container for evaluating and ranking nodes
+"""
+
+from dataclasses import dataclass
+from typing import Dict, List, Any
+
+
+# -----------------------------
+# Scalar Dimension
+# -----------------------------
+
+@dataclass
+class ScalarDimension:
+    """
+    A single scalar dimension in the governance grid.
+    Examples: compliance, throughput, auditability, latency, risk.
+    """
+    name: str
+    value: float
+    min_value: float = 0.0
+    max_value: float = 1.0
+
+    def normalized(self) -> float:
+        """Return the value normalized to [0, 1]."""
+        if self.max_value == self.min_value:
+            return 0.0
+        return (self.value - self.min_value) / (self.max_value - self.min_value)
+
+
+# -----------------------------
+# Governance Node
+# -----------------------------
+
+@dataclass
+class GovernanceNode:
+    """
+    A node in the governance grid.
+    Represents a lab, workflow, system, or institutional asset.
+    """
+    id: str
+    label: str
+    dimensions: Dict[str, ScalarDimension]
+
+    def score(self, weights: Dict[str, float] | None = None) -> float:
+        """
+        Compute a weighted scalar score for this node.
+        If no weights are provided, all dimensions are weighted equally.
+        """
+        if not self.dimensions:
+            return 0.0
+
+        weights = weights or {k: 1.0 for k in self.dimensions.keys()}
+        total_weight = sum(weights.values()) or 1.0
+
+        weighted_sum = 0.0
+        for name, dim in self.dimensions.items():
+            w = weights.get(name, 0.0)
+            weighted_sum += w * dim.normalized()
+
+        return weighted_sum / total_weight
+
+
+# -----------------------------
+# Governance Grid
+# -----------------------------
+
+class ScalarGovernanceGrid:
+    """
+    Container for multiple governance nodes.
+    Supports ranking, scoring, and exporting snapshots.
+    """
+
+    def __init__(self) -> None:
+        self._nodes: Dict[str, GovernanceNode] = {}
+
+    def add_node(self, node: GovernanceNode) -> None:
+        self._nodes[node.id] = node
+
+    def get_node(self, node_id: str) -> GovernanceNode | None:
+        return self._nodes.get(node_id)
+
+    def ranked_nodes(self, weights: Dict[str, float] | None = None) -> List[GovernanceNode]:
+        """Return nodes ranked by score (highest first)."""
+        return sorted(
+            self._nodes.values(),
+            key=lambda n: n.score(weights),
+            reverse=True,
+        )
+
+    def snapshot(self, weights: Dict[str, float] | None = None) -> Dict[str, Any]:
+        """
+        Return a serializable snapshot of the grid:
+        - node scores
+        - normalized dimensions
+        - ranking
+        """
+        data = []
+        for node in self._nodes.values():
+            node_data = {
+                "id": node.id,
+                "label": node.label,
+                "score": node.score(weights),
+                "dimensions": {
+                    name: {
+                        "value": dim.value,
+                        "normalized": dim.normalized(),
+                        "min": dim.min_value,
+                        "max": dim.max_value,
+                    }
+                    for name, dim in node.dimensions.items()
+                },
+            }
+            data.append(node_data)
+
+        ranked = sorted(data, key=lambda d: d["score"], reverse=True)
+        return {"nodes": ranked}
+
+
+# -----------------------------
+# Example Grid (for testing)
+# -----------------------------
+
+def example_grid() -> ScalarGovernanceGrid:
+    """
+    Build a small example grid.
+    Replace with real institutional or workflow data.
+    """
+    grid = ScalarGovernanceGrid()
+
+    node_a = GovernanceNode(
+        id="ucsd-stemcell",
+        label="UCSD Stem Cell Program",
+        dimensions={
+            "compliance": ScalarDimension("compliance", 0.92),
+            "throughput": ScalarDimension("throughput", 0.75),
+            "auditability": ScalarDimension("auditability", 0.88),
+        },
+    )
+
+    node_b = GovernanceNode(
+        id="jlabs-sd",
+        label="JLABS San Diego",
+        dimensions={
+            "compliance": ScalarDimension("compliance", 0.85),
+            "throughput": ScalarDimension("throughput", 0.90),
+            "auditability": ScalarDimension("auditability", 0.80),
+        },
+    )
+
+    grid.add_node(node_a)
+    grid.add_node(node_b)
+    return grid
+
+
+# -----------------------------
+# CLI Entry Point
+# -----------------------------
+
+if __name__ == "__main__":
+    grid = example_grid()
+    snapshot = grid.snapshot()
+
+    for node in snapshot["nodes"]:
+        print(f"{node['label']}: score={node['score']:.3f}")
+
